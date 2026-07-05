@@ -1,4 +1,4 @@
-# Krishna's Birthday Love Challenge
+ # Krishna's Birthday Love Challenge
 
 This is a static birthday quiz game from Chloe to Krishna. The surprise unlocks when the player answers at least 7 out of 8 questions correctly.
 
