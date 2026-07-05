@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Krishna's Birthday Love Challenge</title>
+  <meta name="description" content="A romantic birthday quiz from Chloe to Krishna." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <div class="ambient ambient-three"></div>
+  <div class="decor-layer" aria-hidden="true">
+    <span class="bubble bubble-one">🫧</span>
+    <span class="bubble bubble-two">🫧</span>
+    <span class="bubble bubble-three">🫧</span>
+    <span class="bubble bubble-four">🫧</span>
+    <span class="bubble bubble-five">🫧</span>
+    <span class="bubble bubble-six">🫧</span>
+    <span class="bubble bubble-seven">🫧</span>
+    <span class="bubble bubble-eight">🫧</span>
+    <span class="butterfly butterfly-one"><i></i><b></b></span>
+    <span class="butterfly butterfly-two"><i></i><b></b></span>
+    <span class="butterfly butterfly-three"><i></i><b></b></span>
+    <span class="butterfly butterfly-four"><i></i><b></b></span>
+    <span class="butterfly butterfly-five"><i></i><b></b></span>
+    <span class="butterfly butterfly-six"><i></i><b></b></span>
+    <span class="shooting-star star-one"></span>
+    <span class="shooting-star star-two"></span>
+    <span class="shooting-star star-three"></span>
+    <span class="shooting-star star-four"></span>
+    <span class="shooting-star star-five"></span>
+    <span class="shooting-star star-six"></span>
+    <span class="shooting-star star-seven"></span>
+    <span class="shooting-star star-eight"></span>
+    <span class="shooting-star star-nine"></span>
+  </div>
+
+  <button class="music-toggle" id="musicToggle" type="button" aria-label="music toggle">♪</button>
+  <audio id="bgm" loop preload="none">
+    <source src="assets/music/Katy Perry-Birthday.mp3" type="audio/mpeg" />
+  </audio>
+
+  <main class="app-shell">
+    <section id="startScreen" class="screen start-screen active">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">A birthday surprise from Chloe, made only for Krishna ❤️</p>
+          <h1>A Little Birthday Challenge for Krishna</h1>
+          <p class="subtitle">Before your birthday gift, there is a tiny test about us. Answer 7 out of 8 correctly, and the surprise will open.</p>
+          <div class="hero-actions">
+            <button class="primary-btn" id="startBtn" type="button">Start Challenge</button>
+            <button class="ghost-btn" id="viewMemoryBtn" type="button">See Memories First</button>
+          </div>
+          <div class="mini-note">Made with love by Chloe · 8 questions · 7 to unlock • You should know these by heart... right? 😉</div>
+        </div>
+
+        <div class="photo-stage" aria-label="photo memory wall">
+          <div class="orbit-heart">❤</div>
+          <figure class="polaroid card-a"><img src="assets/photos/photo01.jpg" alt="memory photo 1"><figcaption>date night</figcaption></figure>
+          <figure class="polaroid card-b"><img src="assets/photos/photo03.jpg" alt="memory photo 2"><figcaption>spring us</figcaption></figure>
+          <figure class="polaroid card-c"><img src="assets/photos/photo09.jpg" alt="memory photo 3"><figcaption>desert hug</figcaption></figure>
+          <figure class="polaroid card-d"><img src="assets/photos/photo10.jpg" alt="memory photo 4"><figcaption>just us</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="memoryScreen" class="screen memory-screen">
+      <div class="section-head">
+        <p class="eyebrow">Our little gallery</p>
+        <h2>A Few Moments I Never Want to Forget</h2>
+        <p>Before we get to your birthday surprise, let's revisit a few of our favourite memories.</p>
+      </div>
+      <div class="gallery" id="gallery"></div>
+      <div class="center-actions">
+        <button class="primary-btn" id="memoryStartBtn" type="button">Start Quiz</button>
+        <button class="ghost-btn" id="backHomeBtn" type="button">Back Home</button>
+      </div>
+    </section>
+
+    <section id="quizScreen" class="screen quiz-screen">
+      <div class="quiz-card">
+        <div class="quiz-topline">
+          <span id="questionCount">1 / 8</span>
+          <span id="questionType">Single Choice</span>
+        </div>
+        <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+        <div class="quiz-layout">
+          <div class="quiz-photo-wrap">
+            <img id="quizPhoto" class="quiz-photo" src="assets/photos/photo01.jpg" alt="quiz memory photo" />
+            <div class="photo-caption" id="photoCaption">A memory before the question</div>
+          </div>
+          <div class="question-panel">
+            <h2 id="questionText"></h2>
+            <p id="hintText" class="hint-text"></p>
+            <div id="options" class="options"></div>
+            <div class="quiz-actions">
+              <button class="ghost-btn" id="prevBtn" type="button">Previous</button>
+              <button class="ghost-btn quiz-home-btn" id="quizHomeBtn" type="button">Home</button>
+              <button class="primary-btn" id="nextBtn" type="button">Next</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="resultScreen" class="screen result-screen">
+      <div class="result-card" id="resultCard">
+        <div class="result-badge" id="resultBadge">🎁</div>
+        <h2 id="resultTitle"></h2>
+        <p id="resultText"></p>
+        <div class="score-pill" id="scorePill"></div>
+        <div class="result-actions" id="resultActions"></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="cake-modal" id="cakeModal" aria-hidden="true">
+    <div class="cake-card">
+      <button class="modal-close" id="closeCakeModal" type="button" aria-label="close">×</button>
+      <p class="cake-prompt" id="cakePrompt">Now please close your eyes and make a wish</p>
+      <div class="cake-scene" id="cakeScene">
+        <div class="cake">
+          <div class="candles">
+            <span class="candle candle-one"><i></i></span>
+            <span class="candle candle-two"><i></i></span>
+            <span class="candle candle-three"><i></i></span>
+            <span class="candle candle-four"><i></i></span>
+            <span class="candle candle-five"><i></i></span>
+          </div>
+          <div class="cake-card-tag">Happy Birthday Krishna Babe!</div>
+          <div class="cherries">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="cake-tier cake-tier-top">
+            <div class="icing"></div>
+            <div class="sprinkles"></div>
+          </div>
+          <div class="cake-tier cake-tier-bottom">
+            <div class="icing"></div>
+            <div class="sprinkles"></div>
+          </div>
+          <div class="cake-plate"></div>
+        </div>
+      </div>
+      <button class="primary-btn cake-action" id="wishDoneBtn" type="button">I made my wish</button>
+    </div>
+  </div>
+
+  <div class="modal" id="letterModal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="modal-close" id="closeModal" type="button" aria-label="close">×</button>
+      <div class="envelope">
+        <div class="envelope-flap"></div>
+        <div class="letter-paper">
+          <h3 class="letter-title"><span class="birthday-script">Happy Birthday, Krishna</span> 💗</h3>
+          <p>You passed Chloe's little love quiz.</p>
+          <p>Turns out you know us pretty well... because every question came from a memory I've never stopped cherishing.</p>
+          <p>Thank you for filling my life with laughter, kindness, patience, and countless little moments that have become my favourite memories.</p>
+          <p>Every breakfast, every bus ride, every date, every silly face... they may have seemed ordinary at the time, but together they've become the most beautiful story I could ask for.</p>
+          <p>I can't wait to make even more memories with you.</p>
+          <p>Now it's time to unlock the final surprise. ❤️</p>
+          <p>Come and collect your birthday gift from your baby 🥰.</p>
+          <p class="letter-signature">— Chloe</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
